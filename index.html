@@ -86,6 +86,12 @@
             contentContainer.appendChild(tr);
           }
         });
+
+      document
+        .getElementById("clear-btn")
+        .addEventListener("click", function () {
+          document.getElementById("content-container").remove();
+        });
     </script>
   </body>
 </html>
