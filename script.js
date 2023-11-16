@@ -31,8 +31,17 @@ document.getElementById("task-btn").addEventListener("click", function () {
 document.getElementById("clear-btn").addEventListener("click", function () {
   document.getElementById("content-container").remove();
 });
+// Task Done
+document
+  .getElementById("content-container")
+  .addEventListener("click", function () {
+    if (event.target.classList.contains("done-btn")) {
+      event.target.parentElement.parentElement.style.textDecoration =
+        "line-through";
+    }
+  });
 
-// Delete
+// Task Delete
 
 document
   .getElementById("content-container")
