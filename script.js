@@ -1,11 +1,13 @@
 // Add Task
 let taskNo = 0;
+let totalTask = 0;
 document.getElementById("task-btn").addEventListener("click", function () {
   const task = document.getElementById("input-value").value;
   if (task === "") {
     alert("Please Add A Task");
   } else {
     taskNo += 1;
+    totalTask += 1;
 
     const contentContainer = document.getElementById("content-container");
 
@@ -25,11 +27,14 @@ document.getElementById("task-btn").addEventListener("click", function () {
     tr.appendChild(td1);
     tr.appendChild(td2);
     contentContainer.appendChild(tr);
+    document.getElementById("clear-btn").disabled = false;
   }
 });
 // Clear All
 document.getElementById("clear-btn").addEventListener("click", function () {
   document.getElementById("content-container").remove();
+
+  document.getElementById("clear-btn").disabled = true;
 });
 // Task Done
 document
@@ -48,5 +53,9 @@ document
   .addEventListener("click", function () {
     if (event.target.classList.contains("delete-btn") === true) {
       event.target.parentElement.parentElement.remove();
+      totalTask -= 1;
+      if (totalTask === 0) {
+        document.getElementById("clear-btn").disabled = true;
+      }
     }
   });
